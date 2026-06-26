@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate complete SEO meta tags, Open Graph tags, Twitter cards, robots tags, and schema markup offline.">
+  <meta name="theme-color" content="#08090D">
+  <title>SEO Meta Tag Generator Pro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#generator">Skip to generator</a>
+  <div class="ambient" aria-hidden="true">
+    <span class="blob blob-one"></span>
+    <span class="blob blob-two"></span>
+    <span class="blob blob-three"></span>
+    <span class="grid-glow"></span>
+  </div>
+
+  <header class="site-header">
+    <nav class="nav-shell" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="SEO Meta Tag Generator Pro home">
+        <span class="brand-mark">M</span>
+        <span>MetaForge</span>
+      </a>
+      <div class="nav-actions">
+        <a href="#preview">Preview</a>
+        <a href="#tools">Tools</a>
+        <a href="#output">Output</a>
+        <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle light mode" title="Toggle theme">
+          <span class="sun"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero section-wrap">
+      <div class="hero-content reveal">
+        <p class="eyebrow">Offline SEO toolkit for builders</p>
+        <h1>SEO Meta Tag Generator Pro</h1>
+        <p class="hero-subtitle">Generate complete SEO, Open Graph, Twitter Cards, Canonical URLs, Robots Meta Tags, and Structured Metadata in seconds.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#generator" data-ripple>Generate Tags</a>
+          <a class="button button-secondary" href="#preview" data-ripple>Live Preview</a>
+        </div>
+      </div>
+      <aside class="hero-console reveal" aria-label="Product highlights">
+        <div class="console-top">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="console-line"><b>score</b><span id="heroScore">0</span>/100</div>
+        <div class="mini-meter"><span id="heroMeter"></span></div>
+        <div class="console-tags">
+          <span>Open Graph</span>
+          <span>Twitter Cards</span>
+          <span>JSON-LD</span>
+          <span>Canonical</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="stats-strip section-wrap reveal" aria-label="Live SEO validation">
+      <div><span id="titleCount">0</span><small>Title characters</small></div>
+      <div><span id="descriptionCount">0</span><small>Description characters</small></div>
+      <div><span id="keywordCount">0</span><small>Keywords</small></div>
+      <div><span id="wordCount">0</span><small>Description words</small></div>
+    </section>
+
+    <section class="workspace section-wrap" id="generator">
+      <form class="glass-card form-card reveal" id="metaForm" novalidate>
+        <div class="section-heading">
+          <p class="eyebrow">Generator</p>
+          <h2>Metadata inputs</h2>
+        </div>
+
+        <div class="field-grid">
+          <label>Website Title<input id="title" name="title" required maxlength="120" autocomplete="off" placeholder="Launch-grade SEO platform"></label>
+          <label class="wide">Meta Description<textarea id="description" name="description" required maxlength="240" rows="4" placeholder="Write a concise, benefit-driven search snippet."></textarea></label>
+          <label>Website URL<input id="url" name="url" type="url" required placeholder="https://example.com"></label>
+          <label>Keywords<input id="keywords" name="keywords" placeholder="seo, metadata, open graph"></label>
+          <label>Author<input id="author" name="author" placeholder="Asif Khan"></label>
+          <label>Language<input id="language" name="language" placeholder="en" value="en"></label>
+          <label>Robots<select id="robots" name="robots"><option>index, follow</option><option>noindex, follow</option><option>index, nofollow</option><option>noindex, nofollow</option><option>max-snippet:-1, max-image-preview:large, max-video-preview:-1</option></select></label>
+          <label>Canonical URL<input id="canonical" name="canonical" type="url" placeholder="https://example.com/page"></label>
+          <label>Theme Color<input id="themeColor" name="themeColor" type="color" value="#6366F1"></label>
+          <label>Open Graph Title<input id="ogTitle" name="ogTitle" placeholder="Defaults to website title"></label>
+          <label class="wide">Open Graph Description<textarea id="ogDescription" name="ogDescription" rows="3" placeholder="Defaults to meta description"></textarea></label>
+          <label>Open Graph Image URL<input id="ogImage" name="ogImage" type="url" placeholder="https://example.com/og-image.jpg"></label>
+          <label>Twitter Card Type<select id="twitterCard" name="twitterCard"><option value="summary_large_image">summary_large_image</option><option value="summary">summary</option><option value="app">app</option><option value="player">player</option></select></label>
+          <label>Twitter Title<input id="twitterTitle" name="twitterTitle" placeholder="Defaults to Open Graph title"></label>
+          <label class="wide">Twitter Description<textarea id="twitterDescription" name="twitterDescription" rows="3" placeholder="Defaults to Open Graph description"></textarea></label>
+          <label>Twitter Image<input id="twitterImage" name="twitterImage" type="url" placeholder="https://example.com/twitter-image.jpg"></label>
+          <label>Favicon URL<input id="favicon" name="favicon" type="url" placeholder="/favicon.ico"></label>
+          <label>Application Name<input id="appName" name="appName" placeholder="MetaForge"></label>
+          <label>Publisher<input id="publisher" name="publisher" placeholder="Digital Heroes"></label>
+          <label>Copyright<input id="copyright" name="copyright" placeholder="Copyright 2026 Asif Khan"></label>
+          <label>Apple Touch Icon<input id="appleIcon" name="appleIcon" type="url" placeholder="/apple-touch-icon.png"></label>
+          <label>Microsoft Tile Color<input id="tileColor" name="tileColor" type="color" value="#08090D"></label>
+        </div>
+
+        <div class="drop-zone" id="dropZone" tabindex="0" role="button" aria-label="Upload logo or preview image">
+          <input id="logoUpload" type="file" accept="image/*" hidden>
+          <div>
+            <strong>Drop logo or OG image</strong>
+            <span>PNG, JPG, WEBP. Used instantly in social previews.</span>
+          </div>
+          <button class="button button-ghost" type="button" id="browseUpload" data-ripple>Browse</button>
+        </div>
+
+        <div class="alerts" id="alerts" aria-live="polite"></div>
+        <div class="form-actions">
+          <button class="button button-primary" type="submit" data-ripple>Generate Tags</button>
+          <button class="button button-secondary" type="button" id="importBtn" data-ripple>Import HTML</button>
+          <button class="button button-secondary" type="button" id="clearBtn" data-ripple>Clear Form</button>
+          <button class="button button-ghost" type="button" id="resetBtn" data-ripple>Reset</button>
+        </div>
+      </form>
+
+      <aside class="side-panel">
+        <section class="glass-card score-card reveal" aria-label="SEO score">
+          <div class="score-ring" style="--score:0">
+            <span id="scoreValue">0</span>
+          </div>
+          <div>
+            <p class="eyebrow">SEO Score</p>
+            <h2 id="scoreLabel">Needs inputs</h2>
+            <p class="muted">Balanced scoring across title, description, social metadata, indexability, schema, viewport, and canonical signals.</p>
+          </div>
+        </section>
+
+        <section class="glass-card validation-card reveal">
+          <div class="section-heading compact">
+            <p class="eyebrow">Validation</p>
+            <h2>Live checks</h2>
+          </div>
+          <ul id="validationList" class="check-list"></ul>
+        </section>
+      </aside>
+    </section>
+
+    <section class="section-wrap preview-zone" id="preview">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Live Preview</p>
+        <h2>Search and social cards</h2>
+      </div>
+      <div class="preview-grid">
+        <article class="glass-card google-preview reveal" aria-label="Google search preview">
+          <p class="preview-kicker">Google Search</p>
+          <h3 id="googleTitle">Your title appears here</h3>
+          <p class="google-url" id="googleUrl">https://example.com</p>
+          <p id="googleDescription">Your meta description will update instantly as you type.</p>
+          <div class="pixel-bar"><span id="pixelBar"></span></div>
+        </article>
+
+        <article class="glass-card social-card reveal" aria-label="Facebook preview">
+          <div class="social-image" id="facebookImage">OG</div>
+          <div class="social-body">
+            <span id="facebookSite">example.com</span>
+            <h3 id="facebookTitle">Facebook preview title</h3>
+            <p id="facebookDescription">Open Graph description preview.</p>
+          </div>
+        </article>
+
+        <article class="glass-card social-card twitter reveal" aria-label="Twitter preview">
+          <div class="social-image" id="twitterImagePreview">X</div>
+          <div class="social-body">
+            <span id="twitterSite">@website</span>
+            <h3 id="twitterTitlePreview">Twitter/X card title</h3>
+            <p id="twitterDescriptionPreview">Twitter card description preview.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-wrap tools-zone" id="tools">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Additional Tools</p>
+        <h2>Optimization lab</h2>
+      </div>
+      <div class="tool-grid">
+        <article class="glass-card tool-card reveal">
+          <h3>Title Optimizer</h3>
+          <p id="titleAdvice">Add a title to receive optimization guidance.</p>
+        </article>
+        <article class="glass-card tool-card reveal">
+          <h3>Meta Description Optimizer</h3>
+          <p id="descriptionAdvice">Add a description to receive optimization guidance.</p>
+        </article>
+        <article class="glass-card tool-card reveal">
+          <h3>Slug Generator</h3>
+          <div class="copy-row"><code id="slugOutput">your-page-slug</code><button type="button" class="mini-copy" data-copy-target="slugOutput">Copy</button></div>
+        </article>
+        <article class="glass-card tool-card reveal">
+          <h3>Keyword Density Checker</h3>
+          <div id="densityOutput" class="density-list">Add keywords and description text.</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-wrap output-zone" id="output">
+      <div class="output-header reveal">
+        <div class="section-heading">
+          <p class="eyebrow">Generated Output</p>
+          <h2>Production-ready tags</h2>
+        </div>
+        <div class="output-actions">
+          <button class="button button-primary" type="button" id="copyAllBtn" data-ripple>Copy All</button>
+          <button class="button button-secondary" type="button" id="downloadHtmlBtn" data-ripple>Download HTML</button>
+          <button class="button button-secondary" type="button" id="downloadTxtBtn" data-ripple>Download TXT</button>
+          <button class="button button-ghost" type="button" id="exportJsonBtn" data-ripple>Export JSON</button>
+        </div>
+      </div>
+      <div class="glass-card code-card reveal">
+        <div class="code-toolbar">
+          <span>meta-tags.html</span>
+          <button class="mini-copy" type="button" id="copyVisibleBtn">One-click copy</button>
+        </div>
+        <pre id="codeOutput" tabindex="0"><code><span class="token muted-token">&lt;!-- Fill the form to generate metadata. --&gt;</span></code></pre>
+      </div>
+      <div id="individualTags" class="tag-list reveal" aria-label="Copy individual tags"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="section-wrap footer-inner">
+      <div>
+        <p>Made by</p>
+        <h2>Asif Khan</h2>
+        <a href="mailto:your-email@example.com">your-email@example.com</a>
+      </div>
+      <a class="button button-primary" href="https://digitalheroesco.com" target="_blank" rel="noopener noreferrer" data-ripple>Built for Digital Heroes</a>
+    </div>
+  </footer>
+
+  <dialog id="importDialog" class="import-dialog">
+    <form method="dialog">
+      <h2>Import existing HTML meta tags</h2>
+      <textarea id="importHtml" rows="10" placeholder="Paste your &lt;head&gt; markup here"></textarea>
+      <div class="form-actions">
+        <button class="button button-primary" id="parseImportBtn" value="default" type="button">Import</button>
+        <button class="button button-secondary" value="cancel">Close</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+  <canvas id="confettiCanvas" aria-hidden="true"></canvas>
+  <script src="script.js"></script>
+</body>
+</html>
